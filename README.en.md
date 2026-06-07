@@ -1,24 +1,24 @@
-# Portfólio Pessoal &nbsp;|&nbsp; [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/Giovani-Bianchi/portfolio/blob/main/README.md) [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Giovani-Bianchi/portfolio/blob/main/README.en.md)
+# Personal Portfolio &nbsp;|&nbsp; [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/Giovani-Bianchi/portfolio/blob/main/README.md) [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Giovani-Bianchi/portfolio/blob/main/README.en.md)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Giovani-Bianchi/portfolio?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/Giovani-Bianchi/portfolio?style=for-the-badge)
 ![GitHub open pull requests](https://img.shields.io/github/issues-pr/Giovani-Bianchi/portfolio?style=for-the-badge)
 
-Este repositório contém os arquivos fonte do meu portfólio pessoal de desenvolvedor.
+This repository contains the source files for my personal developer portfolio.
 
-## 📃 Tópicos
+## 📃 Topics
 
-- [Sobre](#sobre)
-- [Tecnologias](#tecnologias)
-- [Instalando o projeto](#instalando)
-- [Inicializando o projeto](#inicializando)
-- [Autor](#autor)
+- [About](#about)
+- [Technologies](#technologies)
+- [Installing the project](#installing)
+- [Running the project](#running)
+- [Author](#author)
 
-<h2 id="sobre">📌 Sobre</h2>
+<h2 id="about">📌 About</h2>
 
-Portfólio pessoal desenvolvido para apresentar projetos, habilidades, experiências e informações de contato.
+Personal portfolio built to showcase projects, skills, experience, and contact information.
 
-<h2 id="tecnologias">⚙ Tecnologias</h2>
+<h2 id="technologies">⚙ Technologies</h2>
 
 <div>
   <img src="https://img.shields.io/badge/Vinext-000000?style=for-the-badge&logo=cloudflare&logoColor=F38020" /> &nbsp
@@ -28,39 +28,39 @@ Portfólio pessoal desenvolvido para apresentar projetos, habilidades, experiên
   <img src="https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white" /> &nbsp
 </div>
 
-<h2 id="instalando">🚀 Instalando o projeto</h2>
+<h2 id="installing">🚀 Installing the project</h2>
 
-### Pré-requisitos
+### Prerequisites
 
-Antes de iniciar, verifique se você atende aos seguintes requisitos:
+Before starting, make sure you meet the following requirements:
 
-- [Node.js](https://nodejs.org/pt) > v18
+- [Node.js](https://nodejs.org/en) > v18
 
-### Instalação
+### Installation
 
-Clone o projeto:
+Clone the project:
 
 ```bash
 git clone https://github.com/Giovani-Bianchi/portfolio.git
 ```
 
-Na raiz do projeto, instale as dependências:
+At the project root, install the dependencies:
 
 ```bash
 npm install
 ```
 
-<h2 id="inicializando">☕ Inicializando o projeto</h2>
+<h2 id="running">☕ Running the project</h2>
 
-Execute o servidor de desenvolvimento:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000) no navegador.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-<h2 id="autor">🧔 Autor</h2>
+<h2 id="author">🧔 Author</h2>
 
 <a href="https://github.com/Giovani-Bianchi">Giovani Wesselka Heriberto Bianchi</a>
 
