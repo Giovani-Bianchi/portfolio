@@ -8,7 +8,9 @@
     "start": "vinext start",
     "lint": "oxlint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -17,12 +19,15 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.37.3",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.2",
     "@vitejs/plugin-rsc": "^0.5.26",
+    "husky": "^9.1.7",
     "oxlint": "^1.66.0",
     "prettier": "^3.8.3",
     "react-server-dom-webpack": "^19.2.6",

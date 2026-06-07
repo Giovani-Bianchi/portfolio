@@ -3,9 +3,6 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
-    paths:
-      - 'src/**/*.ts'
-      - 'src/**/*.tsx'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
