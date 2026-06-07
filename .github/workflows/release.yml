@@ -1,0 +1,77 @@
+name: Release
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine version bump
+        id: bump
+        uses: actions/github-script@v7
+        with:
+          result-encoding: string
+          script: |
+            const labels = context.payload.pull_request.labels.map(l => l.name);
+
+            if (labels.includes('breaking')) return 'major';
+            if (labels.includes('feature')) return 'minor';
+            if (labels.includes('bug') || labels.includes('perf')) return 'patch';
+
+            return 'none';
+
+      - name: Calculate next version
+        id: version
+        if: steps.bump.outputs.result != 'none'
+        run: |
+          LATEST=$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)
+          [ -z "$LATEST" ] && LATEST="v0.0.0"
+
+          VERSION=${LATEST#v}
+          MAJOR=$(echo $VERSION | cut -d. -f1)
+          MINOR=$(echo $VERSION | cut -d. -f2)
+          PATCH=$(echo $VERSION | cut -d. -f3)
+
+          case "${{ steps.bump.outputs.result }}" in
+            major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+            minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+            patch) PATCH=$((PATCH + 1)) ;;
+          esac
+
+          echo "next=v$MAJOR.$MINOR.$PATCH" >> $GITHUB_OUTPUT
+
+      - name: Update package.json
+        if: steps.bump.outputs.result != 'none'
+        run: npm version ${{ steps.version.outputs.next }} --no-git-tag-version
+
+      - name: Commit and tag
+        if: steps.bump.outputs.result != 'none'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.next }} [skip ci]"
+          git tag -a ${{ steps.version.outputs.next }} -m "Release ${{ steps.version.outputs.next }}"
+          git push --follow-tags
+
+      - name: Create GitHub Release
+        if: steps.bump.outputs.result != 'none'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.next }}
+          generate_release_notes: true
